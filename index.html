@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Premium Hot Dog - Hub Digital</title>
+
+    <!-- Fontes do Google: Playfair (Luxo/Títulos) e Inter (Leitura UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Configuração do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        darker: '#050505',
+                        gold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        /* Efeito Glassmorphism Premium */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.3); /* Borda Dourada Fina */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel:hover, .glass-panel:active {
+            border-color: rgba(212, 175, 55, 0.8);
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(0.98);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Botão Principal */
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #aa8c2c 100%);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover, .btn-gold:active {
+            transform: scale(0.97);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Animações de Entrada */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="text-white font-sans antialiased min-h-screen flex flex-col items-center relative">
+
+    <!-- Background com Imagem e Máscara Fosca (Glass) -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <!-- Imagem de fundo do Hot Dog -->
+        <img src="https://images.unsplash.com/photo-1590165482129-1b8b27698780?q=80&w=800&auto=format&fit=crop" alt="Background" class="w-full h-full object-cover object-center" />
+        
+        <!-- Overlay Escuro + Blur (Efeito Fosco) -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-black/95 backdrop-blur-md"></div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="z-10 w-full max-w-md px-6 pt-16 pb-8 flex flex-col flex-grow items-center">
+        
+        <!-- Header -->
+        <header class="text-center mb-10 w-full animate-fade">
+            <!-- Logo Icone -->
+            <div class="relative w-28 h-28 mx-auto mb-5 rounded-full p-[2px] bg-gradient-to-tr from-gold/40 to-gold shadow-lg">
+                <div class="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
+                    <!-- Ícone de gastronomia que remete a algo premium -->
+                    <i class="ph ph-fork-knife text-5xl text-gold"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl font-serif font-bold text-white tracking-wide mb-1 drop-shadow-md">Premium<br>Hot Dog</h1>
+            <p class="text-xs text-gold tracking-[0.25em] uppercase font-medium mt-3">Experiência Gastronômica</p>
+        </header>
+
+        <!-- Container de Links -->
+        <div class="w-full space-y-4 flex flex-col w-full">
+            
+            <!-- Link 1: Cardápio (Destaque Principal) -->
+            <a href="#" class="btn-gold animate-fade delay-1 w-full text-black font-bold py-4 px-6 rounded-2xl flex items-center justify-between group">
+                <div class="flex items-center gap-4">
+                    <div class="bg-black/10 p-2 rounded-xl">
+                        <i class="ph ph-book-open text-2xl"></i>
+                    </div>
+                    <span class="text-lg">Cardápio Digital</span>
+                </div>
+                <i class="ph ph-caret-right text-xl transition-transform group-hover:translate-x-1"></i>
+            </a>
+
+            <!-- Link 2: WhatsApp -->
+            <a href="#" class="glass-panel animate-fade delay-2 w-full text-white py-4 px-6 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <i class="ph ph-whatsapp-logo text-2xl text-gold"></i>
+                    <span class="font-medium tracking-wide">WhatsApp</span>
+                </div>
+                <i class="ph ph-arrow-up-right text-lg text-white/40"></i>
+            </a>
+
+            <!-- Link 3: Instagram -->
+            <a href="#" class="glass-panel animate-fade delay-3 w-full text-white py-4 px-6 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <i class="ph ph-instagram-logo text-2xl text-gold"></i>
+                    <span class="font-medium tracking-wide">Instagram</span>
+                </div>
+                <i class="ph ph-arrow-up-right text-lg text-white/40"></i>
+            </a>
+
+        </div>
+
+        <!-- Spacer para empurrar o footer para baixo -->
+        <div class="flex-grow"></div>
+
+        <!-- Footer / Assinatura da Agência -->
+        <footer class="mt-12 w-full text-center animate-fade delay-3">
+            <p class="text-[10px] text-white/40 tracking-[0.3em] uppercase font-light">
+                Desenvolvido por <span class="text-gold/80 font-medium">Nodus</span>
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
